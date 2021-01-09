@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="..//css/styles.css" />
+    </head>
+    
+    <header>
+        <h1>Trevor's Week 1 Code</h1>
+     </header>
+     <main>
+        <ul>
+         <li>
+             <a href="..\week1\code.html">Go Back</a>
+         </li>
+        </ul>
+        <hr>
+        <figure>
+            <figcaption>Source code for the text example--</figcaption>
+            <pre>
+                &lt;script type=&quot;text/javascript&quot;&gt;
+                function loadStory(){
+                    var storyName = document.getElementById(&quot;name_input&quot;).value;
+                    var storyHTML = localStorage.getItem(storyName);
+                    document.getElementById(&quot;story_editor&quot;).value = storyHTML;
+                }
+                function saveStory(){
+                    var storyName = document.getElementById(&quot;name_input&quot;).value;
+                    console.log(storyName);
+                    var storyHTML = document.getElementById(&quot;story_editor&quot;).value;
+                    localStorage.setItem(storyName,storyHTML);
+                    console.log(storyHTML);
+                }
+                &lt;/script&gt;
+
+                &lt;body&gt;
+                    &lt;header&gt;
+                    &lt;h1&gt;Trevor's Week 1 Code&lt;/h1&gt;
+                    &lt;/header&gt;
+                    &lt;main&gt;
+                    &lt;ul&gt;
+                        &lt;li&gt;
+                            &lt;a href=&quot;..week1index.html&quot;&gt;Go Back&lt;/a&gt;
+                        &lt;/li&gt;
+                    &lt;/ul&gt;
+                    &lt;hr&gt;
+                    &lt;!--create an input box and and text area box as per the example--&gt;
+                    Story Name:&lt;input id=&quot;name_input&quot; type=&quot;text&quot;&gt;&lt;/input&gt;
+                    &lt;section&gt;
+                        &lt;button onclick=&quot;loadStory()&quot;&gt;Load Story&lt;/button&gt;
+                        &lt;button onclick=&quot;saveStory()&quot;&gt;Save Story&lt;/button&gt;
+                    &lt;/section&gt;
+                    &lt;textarea id=&quot;story_editor&quot; placeholder=&quot;Write a story here.&quot;&gt;&lt;/textarea&gt;
+                    &lt;/main&gt;
+                &lt;/body&gt;    
+
+            </pre>
+        </figure>
+    </main>
+    
+
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
+</html>

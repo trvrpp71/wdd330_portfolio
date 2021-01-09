@@ -6,6 +6,20 @@
         <title> WDD330 Portfolio | Trevor Pope</title>
         <meta name="description" content="BYU-Idaho">
         <link rel="stylesheet" href="..//css/styles.css" />
+        <script type="text/javascript">
+            function loadStory(){
+                var storyName = document.getElementById("name_input").value;
+                var storyHTML = localStorage.getItem(storyName);
+                document.getElementById("story_editor").value = storyHTML;
+            }
+            function saveStory(){
+                var storyName = document.getElementById("name_input").value;
+                console.log(storyName);
+                var storyHTML = document.getElementById("story_editor").value;
+                localStorage.setItem(storyName,storyHTML);
+                console.log(storyHTML);
+            }
+        </script>
     </head>
  
     
@@ -18,10 +32,23 @@
             <li>
                 <a href="..\week1\index.html">Go Back</a>
             </li>
+            <li>
+                <a href="..\week1\codecopy.html">See the code for this screen</a>
+            </li>
            </ul>
+           <hr>
+           <!--create an input box and and text area box as per the example-->
+           Story Name:<input id="name_input" type="text"></input>
+           <section>
+               <button onclick="loadStory()">Load Story</button>
+               <button onclick="saveStory()">Save Story</button>
+           </section>
+           <textarea id="story_editor" placeholder="Write a story here."></textarea>
         </main>
     </body>    
     
+    
+
     <footer>
         <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
     </footer>
