@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap');
+
+header, main, footer {
+    margin: 1.25rem auto;
+    padding: 1em;
+    max-width: 600px;
+}
+
+body {
+    font-size: 1em;
+    line-height: 1.25em;;
+    font-family: 'Open Sans', sans-serif;
+    color:black;
+}
+
+ header, footer {
+     font-family: 'Ubuntu', sans-serif;
+     text-align: center;
+     background-color: grey;
+     color:whitesmoke;
+     border-top: 5px solid blue;
+     border-bottom: 5px solid blue;
+ }
+
+ footer {
+     font-size: .5em;
+ }
+
+header img {
+    width: auto;
+    height:180px;
+    float:right;
+    border-radius: 20px;
+    box-shadow: 3px 5px 10px black;
+}
+
+h1 {
+    background-color: aquamarine;
+    border-radius: 20px;
+    box-shadow: 2px 2px 3px black;
+    padding: 1em;
+    font-size:2em;
+    color:white;
+    text-align: center;
+    text-shadow: 2px 2px 3px black;
+}
