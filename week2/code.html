@@ -55,13 +55,12 @@
         <main>
            <ul>
             <li>
-                <a href="..\week1\index.html">Go Back</a>
+                <a href="..\week2\index.html">Go Back</a>
             </li>
-            <li>
-                <a href="..\week1\codecopy.html">See the code for this screen</a>
-            </li>
+  
            </ul>
            <hr>
+           <!--build the input boxes and button-->
            <h3>Loan Calculator</h3>
            <div id = "inputDiv">
                 <label for="amount">Amount borrowed (principle)</label>
@@ -75,41 +74,50 @@
                 <label for="numPmt">No of payments made to date</label>
                 <input type="text" id="numPmt" size="6"> <br>
                 <button type="button" onclick="calcPmtAndBal()">Calculate Monthly Payment and Balance Owing</button>
+                <label for="outputDiv1">Monthly Payment is </label>
                 <div id = 'outputDiv1'> </div>
+                <label for="outputDiv2">Balance owing is </label>
                 <div id = 'outputDiv2'> </div> 
             </div>
             
         </main>
         <script>
-            /* calculate the monthly payment*/
+            /* first get all the values from the input boxes*/
             function calcPmtAndBal(){
                 let principle = parseFloat(document.getElementById('amount').value);
                 let annualRate = parseFloat(document.getElementById('apr').value);
                 let years = parseFloat(document.getElementById('yrs').value);
                 let pmtsPerYr = parseFloat(document.getElementById('ppyr').value);
                 let numPmts = parseFloat(document.getElementById('numPmt').value);
+                /*next call the monthly payment function and then the balance owing function */
                 let monPmt = calcMonthlyPmt(principle,annualRate,years,pmtsPerYr);
-                let balOwe = calBalOwd(principle,annualRate,numPmts);
-
+                let balOwe = calBalOwd(principle,annualRate,years,numPmts,monPmt);
+                /* check to ensure that the interest rate was entered right*/
                 if (annualRate>=1){
                     alert("You are missing a decimal in the annual rate. Please correct it.")
                 } else {
-                    if (isNaN(monPmt)){
+                    if (isNaN(monPmt)){ /*make sure the monthly payment calculated good...if so, carry on */
                         alert("There appears to be an error in your entries. Please check and redo.");
                     } else {
+                        /*put the monthly payment and the balance owing in their respective div*/
                         document.getElementById('outputDiv1').innerHTML = "$" + (Math.round(monPmt)*100/100).toFixed(2);
+                        document.getElementById('outputDiv2').innerHTML = "$" + (Math.round(balOwe)*100/100).toFixed(2);
                     }
                 }
             }
-            
+            /* this function calcs the monthly payment */
             function calcMonthlyPmt(principle,annualRate,years,pmtsPerYr){
                 let r = annualRate / years;
                 let n = years * pmtsPerYr;
                 return (principle*r)/(1-Math.pow((1+r),-n)); 
             }
-
-            function calBalOwd(principal,annualRate,numPmts){
-                let r = 0;
+            /* this function calcs the balance owing */
+            /*i'm thinking there is a better way to do these two functions ?? */
+            function calBalOwd(principal,annualRate, years, numPmts,monPmt){
+                let r = annualRate / years;
+                let b1 = principal*Math.pow((1+r),numPmts)
+                let b2 = monPmt*((Math.pow((1+r),numPmts)-1)/r);
+                return b1-b2;
             }
         </script>
     </body>    
