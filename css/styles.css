@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Ubuntu&display=swap');
-
+/*home and header css*/
 header, main, footer {
     margin: 1.25rem auto;
     padding: 1em;
@@ -63,3 +63,4 @@ textarea {
     height: 250px;
     background-color:lightyellow;
 }
+

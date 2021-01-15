@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="..//css/styles.css" />
+        <!---styles for for the exercise-->
+        <style>
+ 			label {
+				display:inline-block;
+                width: 220px;
+                padding: 5px;
+				margin-left:0px;
+				text-align:left;
+			}
+
+			input {
+				float:right;
+				clear:both;
+				text-align:right;
+				margin-top:5px;
+			}
+
+			button {
+				margin-top:1em;
+				padding:1em;
+			}
+
+			#inputDiv {
+				border:solid;
+				width:470px;
+				padding:5px;
+				margin:0px;
+
+			}
+
+			#outputDiv1, #outputDiv2 {
+		        width: 470px;
+                /*margin-top:-40px;*/
+				padding:5px;
+				font-size:1.2em;
+				font-weight:bold;
+				text-align:end;
+			}           
+        </style>
+    </head>
+ 
+    
+    <body>
+        <header>
+           <h1>Trevor's Week 1 Code</h1>
+        </header>
+        <main>
+           <ul>
+            <li>
+                <a href="..\week1\index.html">Go Back</a>
+            </li>
+            <li>
+                <a href="..\week1\codecopy.html">See the code for this screen</a>
+            </li>
+           </ul>
+           <hr>
+           <h3>Loan Calculator</h3>
+           <div id = "inputDiv">
+                <label for="amount">Amount borrowed (principle)</label>
+                <input typ="text" id="amount" size="15"><br>
+                <label for="apr">Annual Rate (example: .08)</label>
+		 	    <input type="text" id="apr" size="10"> <br>
+                <label for="yrs">Number of years</label>
+                <input type="text" id="yrs" size="6"> <br>
+                <label for="ppyr">Payments per year</label>
+                <input type="text" id="ppyr" size="6"> <br>
+                <label for="numPmt">No of payments made to date</label>
+                <input type="text" id="numPmt" size="6"> <br>
+                <button type="button" onclick="calcPmtAndBal()">Calculate Monthly Payment and Balance Owing</button>
+                <div id = 'outputDiv1'> </div>
+                <div id = 'outputDiv2'> </div> 
+            </div>
+            
+        </main>
+        <script>
+            /* calculate the monthly payment*/
+            function calcPmtAndBal(){
+                let principle = parseFloat(document.getElementById('amount').value);
+                let annualRate = parseFloat(document.getElementById('apr').value);
+                let years = parseFloat(document.getElementById('yrs').value);
+                let pmtsPerYr = parseFloat(document.getElementById('ppyr').value);
+                let numPmts = parseFloat(document.getElementById('numPmt').value);
+                let monPmt = calcMonthlyPmt(principle,annualRate,years,pmtsPerYr);
+                let balOwe = calBalOwd(principle,annualRate,numPmts);
+
+                if (annualRate>=1){
+                    alert("You are missing a decimal in the annual rate. Please correct it.")
+                } else {
+                    if (isNaN(monPmt)){
+                        alert("There appears to be an error in your entries. Please check and redo.");
+                    } else {
+                        document.getElementById('outputDiv1').innerHTML = "$" + (Math.round(monPmt)*100/100).toFixed(2);
+                    }
+                }
+            }
+            
+            function calcMonthlyPmt(principle,annualRate,years,pmtsPerYr){
+                let r = annualRate / years;
+                let n = years * pmtsPerYr;
+                return (principle*r)/(1-Math.pow((1+r),-n)); 
+            }
+
+            function calBalOwd(principal,annualRate,numPmts){
+                let r =
+            }
+        </script>
+    </body>    
+    
+    
+
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
+</html>
