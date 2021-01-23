@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="..//css/styles.css" />
+ 
+    </head>
+ 
+    
+    <body>
+        <header>
+           <h1>Trevor's Week 3 Code</h1>
+        </header>
+        <main>
+           <ul>
+            <li>
+                <a href="..\week3\index.html">Go Back</a>
+            </li>
+  
+           </ul>
+           <hr>
+           <h2>Eloquent JavaScript Ch 14 ex1</h2>
+           <h1>Mountains</h1>
+           <div id="mountains"></div>
+           <h2>Eloquant JavaScript Ch 15 ex1</h2>
+           <div>
+             <p>🎈</p>
+
+           </div>
+           <script>
+             //establish the mountains object array
+             const MOUNTAINS = [
+               {name: "Kilimanjaro", height: 5895, place: "Tanzania"},
+               {name: "Everest", height: 8848, place: "Nepal"},
+               {name: "Mount Fuji", height: 3776, place: "Japan"},
+               {name: "Vaalserberg", height: 323, place: "Netherlands"},
+               {name: "Denali", height: 6168, place: "United States"},
+               {name: "Popocatepetl", height: 5465, place: "Mexico"},
+               {name: "Mont Blanc", height: 4808, place: "Italy/France"}
+             ];
+           
+             function buildTable(info) {
+               //set the table and head row variables by creating the HTML elements
+               //info is the will be the array fields parameters to use as headers
+               let table = document.createElement("table");
+               let headRow = document.createElement("tr");
+               //this next piece of code is using the .keys property of the object to get the field names and 
+               //assigning it to a fields variable
+               let fields = Object.keys(info[0]);
+               console.log(fields[2]);
+               //next, for each field key, create a column table header; each cell variable is headcell
+               fields.forEach(function(field) {
+                 let headCell = document.createElement("th"); //<- this is the table header
+                 headCell.appendChild(document.createTextNode(field));//<-append the field name as a textnode to the cell
+                 headRow.appendChild(headCell);//now append the cell to the row 
+               });
+               table.appendChild(headRow); //now append the row to the table
+           
+               info.forEach(function(object) { //now for each item in the object array, we need to pull out the pieces of info
+                 let row = document.createElement("tr"); //first create the table row element
+                 fields.forEach(function(field) { //we've already created the fields variable based on the object array so we can now loop through it
+                   let rowCell = document.createElement("td"); //now create the data cell in the table
+                   rowCell.appendChild(document.createTextNode(object[field])); //create the text node from the fields object and append it to the row cell
+                   if (typeof object[field] == "number") { //check if the data is a number
+                     rowCell.style.textAlign = "right"; //if it is, align it to the right
+                   }
+                   row.appendChild(rowCell); //append the rowCell data to the row
+                 });
+                 table.appendChild(row); //append the row to the table
+               });
+           
+               return table;
+             }
+             //find the mountains id and call the buildTable function using the MOUNTAINS array
+             document.querySelector("#mountains").appendChild(buildTable(MOUNTAINS));
+
+             //find the paragraph element with the balloon
+             let p = document.querySelector("p");
+             //initialize a size variable
+             let size;
+            //create a function to set the inital size
+            function setSize(newSize){
+              size = newSize;
+              p.style.fontSize = size + "px";
+            }
+            //pass a parameter to teh function to set the intial size
+            setSize(80);
+
+            //now define a function to listen for the arrowup or arrow down event
+            function changeSize(event){
+              //check for arrow key press
+              if (event.key == "ArrowUp") { 
+                console.log(size);
+                //check if the balloon will explode if it increases in size
+                if (size > 150){ //it'll explode
+                  p.textContent = "💥";
+                  document.body.removeEventListener("keydown",changeSize);//remove the event listener 
+                } else { //it's not going to explode so increase the size
+                  //change the size by calling the setSize function with a new parameter
+                    setSize (size * 1.05);
+                    //prevent the arrow key from doing it's default action
+                    event.preventDefault();
+                } 
+              } else if (event.key =="ArrowDown"){
+                  setSize(size *.95);
+                  //prevent the arrow key from doing it's default action
+                  event.preventDefault();
+              };
+              
+            };  //end of function 
+              
+           
+              //add the listener event to the body
+              document.body.addEventListener("keydown",changeSize);
+           </script>
+    </body>    
+    
+    
+
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
+</html>

@@ -34,7 +34,7 @@ header img {
     box-shadow: 3px 5px 10px black;
 }
 
-h1 {
+#mainHeader {
     background-color: aquamarine;
     border-radius: 20px;
     box-shadow: 2px 2px 3px black;
