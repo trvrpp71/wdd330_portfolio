@@ -45,22 +45,5 @@ header img {
     text-shadow: 2px 2px 3px black;
 }
 
-input {
-    margin-left: 10px;
-}
 
-section{
-    padding:10px;
-}
-
-button{
-    margin:10px;
-}
-
-textarea {
-    width:100%;
-    margin:1.25rem auto;
-    height: 250px;
-    background-color:lightyellow;
-}
 
