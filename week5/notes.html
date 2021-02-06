@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="../css/styles.css" />
+    </head>
+ 
+    
+    <body>
+        <header>
+           <h1>Trevor's Week 5 Notes</h1>
+        </header>
+        <main>
+            <ul>
+                <li>
+                    <a href="..\week5\index.html">Go Back</a>
+                </li>
+            </ul>
+            <hr>
+            <h1>Testing & Debugging</h1>
+            <p>
+                Errors typically caused by 1 of 3 things:
+                system error: problem with the system or external devices
+                programming error: program contains syntax errors or faulty logic
+                user error: the user entered data incorrectly and the progam cannot handle it
+
+                It's up to the programmer to minimize program and user error issues through
+            </p>
+                <h2>Exceptions</h2>
+                <p>
+                    An exception is an error that produced a return value 
+                    that can be used by the program to deal with the error
+                    example: calling a function that doesn't exist
+                </p>
+                <h3>Stack Traces</h3>
+                <p>this is the sequence or functions or method calls that lead to the 
+                    point of the error occurance.
+                </p>
+                <h2>Warnings</h2>
+                <p>A warning can occur if there is an error but it is not sufficient enought
+                    to cause the program to stop executing
+                </p>
+
+                <h2>Strict Mode</h2>
+                <p>produced more exceptions and warning and prohibits some depreciated features.
+                    Used to eliminate "poor" style
+
+                    simply put 'use strict' at the start of a js file to turn on.
+                    can use strict mode inside functions for that function only.
+                </p>
+
+                <h2>Linting Tools</h2>
+                <p>are 3rd party apps that can be used to test code.
+                    JS Lint, JS Hint, ES Lint are examples.
+                    </p>
+
+                <h2>Feature Detection</h2>
+                <p>API's are in a constant state of change with new ones being added all the time.
+                    In order to be sure a browser is compatibile with a feature check whether or not
+                    a method or object exists before trying to call the method.
+
+                    Old school way was done via browser sniffing using the window.navigator.useragent property, but is no longer recommended.
+                </p>
+
+                <h2>Debugging in a browser</h2>
+                <h3>Alerts</h3>
+                <p>most basic form of debugging is to use the alert() method to show a dialog
+                    as needed in the code. It stops teh program from running until acknowleged so acts as breakpoints.
+                    Alerts can be used to dynamically ensure users are putting hte right data into the program.
+
+                </p>
+                <h3>using the Console</h3>
+                <p>Most browsers have a development mode which allows users to see the code as it's running.
+                    console.log is an example of using the console to output results within a program.
+                </p>
+                <h3>debugging tools</h3>
+                <p>modern browsers will allow the user to set breakpoints in the code to pause it and evaluate the program as it steps through each command.
+                    the "debugger" keyword command is a very useful command to know as it will create a breakpoint
+                    in the code to stop it executing and see where things are at.
+                </p>
+                <h2>Error Objects</h2>
+                <p>can be created by the host environment when an exception occurs or can be created by a constructor function
+                    There are 7 error objects used for specific errors:
+                    <li>evalerror: not used in current specs</li>
+                    <li>RangeError: when a number is outside of a range limit</li>
+                    <li>ReferenceError: thrown when a ref is made to an item that doesn't exist</li>
+                    <li>SyntaxError: something is wrong in the syntax</li>
+                    <li>TypeError: an error in the type of value used; ie a string instead of a number</li>
+                    <li>URIError: problems when encoding or decoding the URI</li>
+                    <li>InternalError: non-standard error that occurs in the JS engine.</li>
+                </p>
+                <p>error objects have properties, but should only use "name", "message", and "stack" properties.</p>
+
+                <h2>Throwing Exceptions</h2>
+                <p>it's possible to thow your own exceptions when using the throw statement.
+                    throw can be applied to any JS expression causing the program to stop.
+                    Best practice is to throw an error object which then can be caught in a catch block.
+                </p>
+                <h2>Exception Handling</h2>
+                <p>by handling exceptions in the program, often errors can be managed without shutting the program down
+                    keeping them transparent to the user.
+                </p>
+                <p> this can be done using hte try, catch and finally </p>
+
+                <h2>Tests</h2>
+                <p>testing is an important part of programming. Testing can be as simple as a function that tests the code 
+                </p>
+                <h3>Test-driven Development</h3>
+                <p>TDD is teh process of wrting tests before any code. Then write code to pass the tests. Once that's done, refactor the code and remove repition.
+                    Repeat the process until the code is streamlined.
+                </p>
+                <h3>Testing Frameworks</h3>
+                <p>applications that provide a structure to write meaninful tests and then run them.
+                    JEST is one of those frameworks.
+                </p>
+                
+        </main>
+    </body>    
+    
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
+</html>
