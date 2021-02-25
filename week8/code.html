@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="..//css/styles.css" />
+        <!---example specific sytles-->
+        <style>
+   
+            .text-container{
+                float:right;
+                font-size: 2em;
+
+            }
+            #one{
+                transform: translate(-30px, 40px);
+            }
+           
+            #two, #three{
+                transform: translate(-30px, 100px);
+            }
+
+            #two:hover{
+                color:crimson;
+                transform:rotate(10deg) translateX(40px) scale(1.5) skew(15deg);
+            }
+
+            .circle{
+                height:400px;
+                width:400px;
+                border:2px dashed green;
+                background: lightblue;
+                margin:auto;
+            }
+
+            .dot{
+                height:75px;
+                width:75px;
+                border:1px solid black;
+                margin:auto;
+                transform-origin: 25%;
+                transform:rotate(45deg);
+            }
+
+            .foot{
+                float: left;
+                width: 200px;
+                height: 200px;
+                margin: 20px;
+                shape-outside: circle();
+                float: left;
+                clip-path: circle();
+                background: green;
+                border:2px solid darkblue;
+        }
+
+
+            .origin{
+                width:2em;
+                height:2em;
+                background:rgba(0,0,0.4);
+                -webkit-animation: spin 6s cubic-bezier(.8, 0, .2,1) infinite;
+                        animation: spin 6s cubic-bezier(.8, 0, .2,1) infinite;
+            }
+
+            @keyframes spin {
+                    50% {
+                        transform:rotate(180deg);
+                    }
+                    100%{
+                        transform:rotate(360deg);
+                    }
+                    
+            }
+            
+            .origin:before, .origin:after{
+                content: "";
+                display:block;
+                height:100%;
+                top:0;
+                left:0;
+                border:solid 1px red;
+                transform-origin: inherit;
+            }
+
+        </style>
+
+    </head>
+ 
+    
+    <body>
+        <header>
+           <h1>Trevor's Week 7 Code</h1>
+        </header>
+        <main>
+           <ul>
+            <li>
+                <a href="..\week8\index.html">Go Back</a>
+            </li>
+  
+           </ul>
+           <hr>
+           <div class="container">
+            <img src="img/standing-clipart-standing.png">
+            <div class="text-container">
+                <p id = "one">Not</p>
+                <p id = "two">TODAY</p>
+                <p id = "three">my friend...</p>
+            </div>
+        </div>
+        <div class="circle">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="foot"></div>
+        </div>
+        
+        <div class="origin-container"></div>
+            <div class="origin" style="transform-origin: top left"></div>
+            <div class="origin" style="transform-origin: top center"></div>
+            <div class="origin" style="transform-origin: top right"></div>
+        <div>
+
+
+          
+     </body>    
+    
+    
+
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
+</html>
