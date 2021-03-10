@@ -16,13 +16,14 @@ export function getJSON(url){
 // };
 
 export function getLocation(){
+    let options = {timeout:60000};
     navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 }
 
 function showLocation(position){
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    alert("latitude: " + latitude + " Longitude: " + longitude);
+    alert("latitude: " + latitude + "Longitude: " + longitude);
 }
 
 function errorHandler(err){
