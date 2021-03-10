@@ -15,7 +15,7 @@ export function getJSON(url){
 //     });
 // };
 
-export const location = function getLocation(){
+export function getLocation(){
     navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
 }
 
