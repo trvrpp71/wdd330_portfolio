@@ -1,4 +1,4 @@
-import {getLocation} from './utilities.js'
+import {getLocation} from './utilities.js';
 import Quake from './quake.js';
 import QuakesView from './quakesview.js';
 
