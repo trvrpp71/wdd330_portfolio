@@ -23,7 +23,7 @@ export const getLocation = function(options){
 // function showLocation(position){
 //     let latitude = position.coords.latitude;
 //     let longitude = position.coords.longitude;
-//     alert("latitude: " + latitude + "Longitude: " + longitude);
+//     alert("latitude: " + latitude + " Longitude: " + longitude);
 // }
 
 // function errorHandler(err){
