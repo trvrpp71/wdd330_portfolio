@@ -9,13 +9,29 @@ export function getJSON(url){
     });
 };
 
-export const getLocation = function(options){
-    return new Promise(function(resolve,reject){
-        navigator.geolocation.getCurrentPosition(resolve,reject,options)
-    });
-};
+// export const getLocation = function(options){
+//     return new Promise(function(resolve,reject){
+//         navigator.geolocation.getCurrentPosition(resolve,reject,options)
+//     });
+// };
 
+export const location = function getLocation(){
+    navigator.geolocation.getCurrentPosition(showLocation, errorHandler, options);
+}
 
+function showLocation(position){
+    let latitude = position.coords.latitude;
+    let longitude = position.coords.longitude;
+    alert(*"latitude: " + latitude + " Longitude: " + longitude);
+}
+
+function errorHandler(err){
+    if(err.code == 1) {
+        alert("error: access denied");
+    } else if(err.code ==2 ){
+        alert("error: position is not avaialble");
+    }
+}
 
 
 
