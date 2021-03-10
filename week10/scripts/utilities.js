@@ -22,7 +22,7 @@ export const location = function getLocation(){
 function showLocation(position){
     let latitude = position.coords.latitude;
     let longitude = position.coords.longitude;
-    alert(*"latitude: " + latitude + " Longitude: " + longitude);
+    alert("latitude: " + latitude + " Longitude: " + longitude);
 }
 
 function errorHandler(err){
