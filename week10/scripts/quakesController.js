@@ -33,7 +33,7 @@ export default class QuakesController {
         // if we get the location back then set the latitude and longitude into this.position
         this.position.lat = positionComplete.latitude;
         this.position.lon = positionComplete.longitude;
-        console.log(positionComplete);
+        console.log(this.position.lat, this.position.lon);
         
       } catch (error) {
         console.log(error);
