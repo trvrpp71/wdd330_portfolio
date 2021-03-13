@@ -1,15 +1,71 @@
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <main>
-        <h1>Quake List</h1>
-        <ul id="quakeList"></ul>
-    </main>
-    <script src='./scripts/index.js' type="module"></script>
-</body>
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <title> WDD330 Portfolio | Trevor Pope</title>
+        <meta name="description" content="BYU-Idaho">
+        <link rel="stylesheet" href="../css/styles.css" />
+    </head>
+ 
+    
+    <body>
+        <header>
+           <h1>Trevor's Portfolio</h1>
+        </header>
+        <main>
+            <h2>Please choose:</h2>
+            <ul>
+                 <li>
+                    <a href="code.html">Code Example of Form Validation</a>
+                </li>
+                <li>
+                    <a href="..\index.html">Back to the main menu</a>
+                </li>
+            </ul>
+            <hr>
+            <h1>FETCH API</h1>
+           <p>fetch() replaces XML term</p>
+           <p>fetch() returns a promise</p>
+           <h3>Basic syntax</h3>
+           <p>let promise = fetch(url, [options])</p>
+           <p>the promise resolves with the built-in response class</p>
+           <h3>Example</h3>
+           <p>let response = await fetch(url);<br>
+
+            if (response.ok) { // if HTTP-status is 200-299 <br>
+              // get the response body (the method explained below) <br>
+              let json = await response.json();<br>
+            } else {<br>
+              alert("HTTP-Error: " + response.status);<br>
+            }</p>
+
+            <p>a typical fetch consists of either: </p>
+            <p>two await calls:</p>
+            <p>let response = await fetch(url, options); // resolves with response headers <br>
+                let result = await response.json(); // read body as json</p>
+            <p>OR</p>
+            <p>wihtout the await call:</p>
+            <p>fetch(url, options) <br>
+                .then(response => response.json()) <br>
+                .then(result => /* process result */)</p>
+            <h3>Response Properties</h3>
+            <li>response.status - HTTP code of the response</li>
+            <li>resonse.ok - true ; status is 200-299</li>
+            <li>response.headers - map-like object with HTTP headers</li>
+            <h3>methods to the response body</h3>
+            <li>response.text() - returns response as text</li>
+            <li>response.json() - parse teh response as JSON object</li>
+            <li>response.formData() - return the response as formdata object</li>
+            <li>response.blob() - return the response as Blob binary data type</li>
+            <li>response.arrayBuffer() -return response as ArrayBuffer</li>
+                
+        </main>
+        <script src="sandbox.js"></script>
+    </body>    
+    
+    <footer>
+        <p>&#169;2021 Trevor Pope Houston Texas <a href="http://www.byui.edu">BYU-Idaho Online</a></p>
+    </footer>
+    
 </html>
