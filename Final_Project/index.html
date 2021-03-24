@@ -9,11 +9,15 @@
 <body>
     <div class="container">
         <h1>Image Gallery</h1>
-        <form id="form" enctype="multipart/form-data">
+
+        <progress value = "0" max = "100" id="uploader">0%</progress>
+
+<!--        <form id="form" enctype="multipart/form-data"> -->
             <div class="upload">
-                <input type="file" id="image" class="form-control">
+                <input type="file" id="image">
             </div>
-            <div class="form-group">
+        
+<!--            <div class="form-group">
                 <button class="btn btn-primary">Upload</button>
             </div>
         </form>
@@ -21,10 +25,44 @@
     </div>
     <div id="result"></div>
 
+-->
 
 
+        <div id="gallery">
 
+        </div>
 
-    <script src="main.js"></script>
+        <div id="myModal" class="modal">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <img class="modal-content" id="modal-img">
+        </div>
+
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#available-libraries -->
+
+    <script>
+    // Your web app's Firebase configuration
+    var firebaseConfig = {
+        apiKey: "AIzaSyBNNcOLAHbZNrovoZTtzYxTKd3-7Q-N0xc",
+        authDomain: "wdd330final.firebaseapp.com",
+        projectId: "wdd330final",
+        storageBucket: "wdd330final.appspot.com",
+        messagingSenderId: "41890343479",
+        appId: "1:41890343479:web:eee022cacc22cb5fe2edb2"
+    };
+    // Initialize Firebase
+    firebase.initializeApp(firebaseConfig);
+
+    const storage = firebase.storage();
+    const storageRef = storage.ref();
+    const imagesRef = storageRef.child('images');
+    
+    </script>
+
+    <script src="script.js"></script>
 </body>
 </html>
