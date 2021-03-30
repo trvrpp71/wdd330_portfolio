@@ -1,52 +1,109 @@
+import utils from "./utils.js";
 
-const form = document.getElementById('form')
-const parentDiv = document.getElementById('result');
-const image = document.getElementById('image');
+/*----------initialize Firebase--------------*/
 
-form.addEventListener('submit', e => {
+const app = firebase.initializeApp({
+    apiKey: "AIzaSyBNNcOLAHbZNrovoZTtzYxTKd3-7Q-N0xc",
+    authDomain: "wdd330final.firebaseapp.com",
+    projectId: "wdd330final",
+    storageBucket: "wdd330final.appspot.com",
+    messagingSenderId: "41890343479",
+    appId: "1:41890343479:web:eee022cacc22cb5fe2edb2"
+});
+const storage = app.storage();
+const imageRef = firebase.storage().ref("images/");
+
+const fileButton = document.getElementById('image');
+const gallery = document.querySelector('#gallery');
+const modal = document.getElementById('myModal');
+const mImg = document.getElementById('modal-img');
+const captionText = document.getElementById('caption');
+
+//listen for file selection
+fileButton.addEventListener('change', e => {
     e.preventDefault();
+    utils.upload(e);
+})
 
-    const reader = new FileReader();
 
-    const name = document.getElementById("image").files[0].name;
+/*----------ADD HTML & VIEW FILES---------------*/
+
+
+
+imageRef.listAll().then (res => {
     
-    console.log(name);
+    let c = (res.items.length);
+    
+    res.items.forEach((item) => {
 
+        const name = item.name;
 
-    reader.addEventListener('load', function()  {
+        item.getDownloadURL().then((url) => {
 
-        if(this.result && localStorage) {
-            window.localStorage.setItem(name, this.result);
-            alert("Image stored in local storage");
-            parentDiv.innerHTML='';
-            image.value='';
-            showImages();
-        } else {
-            alert ("unable to save to local storage")
-        }
+           if (c != 1) {
+                gallery.innerHTML += `
+                    <li class="gallery-img" id="${name}">
+                        <img src=${url}>
+                        <i class="far fa-trash-alt delete"></i>
+                    </li>
+                   `;
+                c--;      
+           } else if (c===1) {
+            gallery.innerHTML += `
+                <li class="gallery-img" id="${name}">
+                    <img src=${url}>
+                    <i class="far fa-trash-alt delete"></i>
+                </li>
+                <li></li>
+           `;
+           }
+        });
     });
-
-    reader.readAsDataURL(image.files[0]);
-
 });
 
 
-function showImages(){
 
-    for(let i = 0; i<window.localStorage.length;i++){
-        let res = window.localStorage.getItem(window.localStorage.key(i));
-        const newImage = new Image();
-        newImage.src = res;
-        parentDiv.appendChild(newImage);
+
+//listen for which image was clicked
+
+gallery.addEventListener(('click'), e => {
+    e.preventDefault();
+
+
+    if(e.target.tagName === 'IMG'){
+        const id = e.target.parentElement.getAttribute('id');
+        const src = e.target.getAttribute('src');
+        const meta = storage.ref('images/' + id);
+        
+        modal.style.display = "block"; 
+        mImg.setAttribute("src", src);
+        captionText.innerHTML = `<p> Filename: ${id}</p>`
+    
+        meta.getMetadata().then(metadata => {
+            const dateStamp = metadata.timeCreated;
+            utils.addMeta(dateStamp);
+        });
+    } else if (e.target.tagName ==="I") {  //the delete button was clicked
+        const id = e.target.parentElement.getAttribute('id');
+        if (confirm("Are you sure you want to delete this image?")) {
+            const deleteRef = storage.ref('images/' + id);
+            deleteRef.delete().then(() => {
+                location.reload(true);
+                alert("File deleted succesfully");
+
+            }).catch((err) => {
+                alert("Something went wrong...")
+            });
+        }
+        
     }
+});
 
+
+
+function closeModal(){
+    modal.style.display = "none";
 }
 
-function removeImages() {
-    window.localStorage.clear();
-    parentDiv.innerHTML='';
-    showImages();
-}
 
 
-showImages();

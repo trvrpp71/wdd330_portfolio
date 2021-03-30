@@ -1,42 +1,20 @@
-/*img {
-    
-    height:250px;
-    border-radius: 10px;
-    box-shadow: 0 0 1.2rem rgba(0,0,0,0.25);
-    margin:10px;
-
+* {
+    box-sizing: border-box;
 }
 
-*/
-
-body{
-    max-width: 400px;
-    border:1px solid black;
-    margin:auto;
-
-}
-
-#image {
-    width:100%;
-    padding:1em;
-    margin-left:40px;
-}
-
-
-
+/*
 #container {
-    
+        
     display:flex;
     min-height: 100vh;
     width:100%;
-    padding:0;
+    padding:10px;
     margin:0;
     align-items:center;
     justify-content: center;
     flex-direction: column;
-    
+    border:1px solid red;
 }
-
 
 #uploader {
     -webkit-appearance: none;
@@ -46,28 +24,52 @@ body{
     margin-right:auto;
     margin-bottom:20px;
     display:block;
-    
+
+}
+*/
+
+ul {
+    display:flex;
+    flex-direction: row;
+    flex-wrap:wrap;
+    justify-content: center;
+    padding: 0 4px;
+    border: 1px dashed red;
+    list-style: none;
 }
 
-#gallery{
-    display:flex;
-    width:100%;
-    align-items: center;
-    justify-content: center;
-    flex-direction: column;
+li {
+   height:40vh;
+   flex-grow:1;
 }
+
+li:last-child{
+    flex-grow: 5;
+}
+img{
+    max-height:100%;
+    min-width:100%;
+    object-fit: cover;
+    vertical-align: bottom;
+    padding:2px;
+}
+
+.delete {
+    color:white;
+    position:relative;
+    z-index:2;
+    top:-30px;
+    left:20px;
+    cursor: pointer;
+
+}
+
 
 h1 {
     text-align: center;
 }
 
-.gallery-img {
-    height: 200px;
-    width: auto;
-    padding:20px;
-    border-radius:5px;
-    transition:0.3s;
-}
+
 
 img:hover{
     opacity:.7;
@@ -86,7 +88,7 @@ img:hover{
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0,0,0); /* Fallback color */
     background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
-  }
+}
 
 
 /* Modal Content (Image) */
@@ -96,9 +98,25 @@ img:hover{
     width: 80%;
     max-width: 700px;
     animation-name: zoom;
-  }
+}
+
+/* Caption of Modal Image (Image Text) - Same Width as the Image */
+#caption{
+    margin: auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 150px;
+}
 
 
+.modal-content, #caption {
+    animation-name: zoom;
+    animation-duration: 0.6s;
+}
 
 @keyframes zoom{
     from {transform:scale(0)}
@@ -114,11 +132,13 @@ img:hover{
     font-size: 40px;
     font-weight: bold;
     transition: 0.3s;
-  }
-  
-  .close:hover,
-  .close:focus {
+}
+
+.close:hover,.close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
-  }
+}
+
+
+  
