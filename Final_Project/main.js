@@ -18,6 +18,7 @@ const gallery = document.querySelector('#gallery');
 const modal = document.getElementById('myModal');
 const mImg = document.getElementById('modal-img');
 const captionText = document.getElementById('caption');
+const close = document.getElementById('close');
 
 //listen for file selection
 fileButton.addEventListener('change', e => {
@@ -49,13 +50,13 @@ imageRef.listAll().then (res => {
                    `;
                 c--;      
            } else if (c===1) {
-            gallery.innerHTML += `
-                <li class="gallery-img" id="${name}">
-                    <img src=${url}>
-                    <i class="far fa-trash-alt delete"></i>
-                </li>
-                <li></li>
-           `;
+                gallery.innerHTML += `
+                    <li class="gallery-img" id="${name}">
+                        <img src=${url}>
+                        <i class="far fa-trash-alt delete"></i>
+                    </li>
+                    <li></li>
+            `;
            }
         });
     });
@@ -81,7 +82,7 @@ gallery.addEventListener(('click'), e => {
     
         meta.getMetadata().then(metadata => {
             const dateStamp = metadata.timeCreated;
-            utils.addMeta(dateStamp);
+            utils.addMeta(dateStamp, captionText);
         });
     } else if (e.target.tagName ==="I") {  //the delete button was clicked
         const id = e.target.parentElement.getAttribute('id');
@@ -100,10 +101,11 @@ gallery.addEventListener(('click'), e => {
 });
 
 
-
-function closeModal(){
+close.addEventListener(('click'), e => {
+    e.preventDefault();
     modal.style.display = "none";
-}
+});
+
 
 
 

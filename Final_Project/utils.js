@@ -41,9 +41,10 @@ function galleryFix(){
 
 
 
-function addMeta(dateStamp){
+function addMeta(dateStamp, captionText){
+    
     const dateShot = new Date(dateStamp);
-    captionText.innerHTML += `<p> Date & time Shot: ${dateShot}`;
+    captionText.innerHTML += `<p> Date & Time Uploaded: ${dateShot}`;
 }
 
 

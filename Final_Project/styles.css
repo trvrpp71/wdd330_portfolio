@@ -1,32 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=New+Tegomin&display=swap');
+
 * {
     box-sizing: border-box;
+    font-family: 'New Tegomin', serif;
 }
 
-/*
-#container {
-        
-    display:flex;
-    min-height: 100vh;
-    width:100%;
-    padding:10px;
-    margin:0;
-    align-items:center;
-    justify-content: center;
-    flex-direction: column;
-    border:1px solid red;
-}
-
-#uploader {
+.upload, #uploader {
     -webkit-appearance: none;
     appearance: none;
-    width:75%;
+    width:25%;
     margin-left:auto;
     margin-right:auto;
     margin-bottom:20px;
     display:block;
-
 }
-*/
+
 
 ul {
     display:flex;
@@ -34,7 +22,6 @@ ul {
     flex-wrap:wrap;
     justify-content: center;
     padding: 0 4px;
-    border: 1px dashed red;
     list-style: none;
 }
 
@@ -44,7 +31,7 @@ li {
 }
 
 li:last-child{
-    flex-grow: 5;
+    flex-grow: 10;
 }
 img{
     max-height:100%;
@@ -57,13 +44,15 @@ img{
 .delete {
     color:white;
     position:relative;
-    z-index:2;
     top:-30px;
     left:20px;
     cursor: pointer;
 
 }
 
+.delete:hover {
+    transform:scale(2);
+}
 
 h1 {
     text-align: center;
@@ -71,7 +60,7 @@ h1 {
 
 
 
-img:hover{
+.gallery-img > img:hover{
     opacity:.7;
 }
 
@@ -95,12 +84,12 @@ img:hover{
 .modal-content {
     margin: auto;
     display: block;
-    width: 80%;
-    max-width: 700px;
+    width:80%;
     animation-name: zoom;
+    padding:20px;
 }
 
-/* Caption of Modal Image (Image Text) - Same Width as the Image */
+
 #caption{
     margin: auto;
     display: block;
@@ -124,7 +113,7 @@ img:hover{
 }
 
 
-.close {
+#close {
     position: absolute;
     top: 15px;
     right: 35px;
@@ -134,11 +123,63 @@ img:hover{
     transition: 0.3s;
 }
 
-.close:hover,.close:focus {
+#close:hover,#close:focus {
     color: #bbb;
     text-decoration: none;
     cursor: pointer;
 }
 
+footer{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
 
+
+
+@media (max-aspect-ratio:1/1){
+    li {
+        height:30vh;
+    }
+}
+
+@media (max-height:480px){
+    li {
+        height:80vh;
+    }
+}
+
+@media (max-aspect-ratio: 1/1) and (max-width: 480px) {
+    ul {
+      flex-direction: row;
+    }
   
+    li {
+      height: auto;
+      width: 100%;
+    }
+  
+    img {
+      width: 100%;
+      max-height: 75vh;
+      min-width: 0;
+      padding:0 10px 0 10px;
+    }
+  }
+
+@media screen and (min-width:85em){
+   
+    .modal-content {
+        width:60%;
+        min-width:48em;
+    }
+}
+
+@media screen and (min-width:64em){
+   
+    .modal-content {
+        width:70%;
+        min-width:30em;
+       
+    }
+}
