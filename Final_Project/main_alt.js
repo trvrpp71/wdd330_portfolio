@@ -1,4 +1,9 @@
 
+/*NOTE --- THIS JS WILL NOT WORK BUT IS INCLUDED TO 
+== SHOW THE OTHER METHOD I TRIED USING LOCAL STORAGE FOR IMAGES
+== IT WAS WORKING PRIOR TO MY CURRENT VERSION
+*/
+
 const form = document.getElementById('form')
 const parentDiv = document.getElementById('result');
 const image = document.getElementById('image');

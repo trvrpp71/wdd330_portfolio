@@ -44,7 +44,7 @@ imageRef.listAll().then (res => {
            if (c != 1) {
                 gallery.innerHTML += `
                     <li class="gallery-img" id="${name}">
-                        <img src=${url}>
+                        <img src=${url} alt="${name}">
                         <i class="far fa-trash-alt delete"></i>
                     </li>
                    `;

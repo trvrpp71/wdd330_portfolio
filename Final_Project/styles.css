@@ -15,7 +15,6 @@
     display:block;
 }
 
-
 ul {
     display:flex;
     flex-direction: row;
@@ -58,13 +57,11 @@ h1 {
     text-align: center;
 }
 
-
-
 .gallery-img > img:hover{
     opacity:.7;
 }
 
-/* The Modal (background) */
+
 .modal {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
