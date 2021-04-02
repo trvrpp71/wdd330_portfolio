@@ -44,8 +44,24 @@ function galleryFix(){
 function addMeta(dateStamp, captionText){
     
     const dateShot = new Date(dateStamp);
-    captionText.innerHTML += `<p> Date & Time Uploaded: ${dateShot}`;
+    const months = ["JAN", "FEB", "MAR","APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+    
+    let formatted_date = dateShot.getDate() + "-" + months[dateShot.getMonth()] + "-" + dateShot.getFullYear() 
+    let formatted_time = appendZeros(dateShot.getHours()) + ":" + appendZeros(dateShot.getMinutes()) + ":" + appendZeros(dateShot.getSeconds()); 
+    captionText.innerHTML += `
+        <p> Date Uploaded: ${formatted_date}
+        <p> Time Uploaded: ${formatted_time}
+        `;
+
 }
+
+function appendZeros(n){
+    if(n <=9){
+        return "0" + n;
+    }
+    return n
+}
+
 
 
 export default {
